@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Dashboard · Web Tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="dashboard">
+  <header class="topbar">
+    <div class="brand">Web Tech · Class Check-in</div>
+    <nav aria-label="Main">
+      <a href="index.html">Check-in</a>
+      <a href="dashboard.html" class="active" aria-current="page">Dashboard</a>
+    </nav>
+    <button id="theme" class="ghost icon" type="button" aria-label="Toggle dark mode">Theme</button>
+  </header>
+
+  <main class="container wide">
+    <h1>Class dashboard</h1>
+    <p class="lede">Live view of today's attendance, the discussion vote, and who is ready to start quizzes.</p>
+
+    <section class="card">
+      <h2>Faculty check-in code</h2>
+      <p id="code-help" class="hint"></p>
+      <div class="code-row">
+        <span id="code" class="code" aria-live="polite">Closed</span>
+        <button id="new-code" class="primary" type="button">Generate new code</button>
+        <button id="close-code" class="ghost" type="button">Close check-in</button>
+      </div>
+    </section>
+
+    <div class="stats">
+      <div class="stat"><span class="stat-num" id="stat-total">0</span><span class="stat-label">Checked in</span></div>
+      <div class="stat ok"><span class="stat-num" id="stat-ready">0</span><span class="stat-label">Cleared to start</span></div>
+      <div class="stat warn"><span class="stat-num" id="stat-missing">0</span><span class="stat-label">Missing prerequisites</span></div>
+    </div>
+
+    <section class="card">
+      <h2>Discussion vote</h2>
+      <p id="winner" class="winner"></p>
+      <div id="bars" class="bars"></div>
+    </section>
+
+    <section class="card">
+      <h2>Attendance &amp; readiness</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Time</th><th>Lesson</th><th>In-class quizzes</th><th>Discussion entries</th><th>Status</th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p id="empty" class="hint hidden">Nobody has checked in yet.</p>
+      <div class="actions">
+        <button id="export" class="primary" type="button">Export CSV</button>
+        <button id="reset" class="danger" type="button">Reset for new class</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

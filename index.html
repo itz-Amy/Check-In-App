@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Check-in · Web Tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="checkin">
+  <header class="topbar">
+    <div class="brand">Web Tech · Class Check-in</div>
+    <nav aria-label="Main">
+      <a href="index.html" class="active" aria-current="page">Check-in</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+    <button id="theme" class="ghost icon" type="button" aria-label="Toggle dark mode">Theme</button>
+  </header>
+
+  <main class="container">
+    <h1>Today's class check-in</h1>
+    <p class="lede">Mark your attendance with the faculty code, choose the quizzes you'll do in class, vote on a quiz to discuss, and declare your prerequisites. No login needed.</p>
+
+    <p id="notice" class="banner warn hidden" role="status">Check-in is closed. Your faculty hasn't generated today's code yet.</p>
+
+    <form id="checkin-form" novalidate>
+      <section class="card">
+        <h2><span class="step">1</span> Attendance</h2>
+        <label for="name">Your full name</label>
+        <input id="name" type="text" autocomplete="name" placeholder="e.g. Ama Mensah" maxlength="60" required>
+
+        <label for="code">Faculty code</label>
+        <input id="code" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Code from your faculty" maxlength="12" required>
+
+        <label for="lesson">Today's lesson</label>
+        <select id="lesson" required></select>
+      </section>
+
+      <section class="card">
+        <h2><span class="step">2</span> Reading quiz results</h2>
+        <p class="hint">Enter your score (%) for every reading quiz you've written. Leave it blank if you haven't written it yet. <span class="pass-note"></span></p>
+        <div id="scores"></div>
+      </section>
+
+      <section class="card">
+        <h2><span class="step">3</span> Quizzes to do in class <span id="class-count" class="pill"></span></h2>
+        <p class="hint">Choose at most <span class="max-note"></span> quizzes, reading or terminal. A terminal quiz unlocks once you've entered a score for that lesson's reading quiz.</p>
+        <div id="classquizzes"></div>
+      </section>
+
+      <section class="card">
+        <h2><span class="step">4</span> Quiz for discussion</h2>
+        <p class="hint">Only reading quizzes you've passed can be voted for. Vote counts update as people check in.</p>
+        <div id="discussion"></div>
+      </section>
+
+      <section class="card">
+        <h2><span class="step">5</span> Prerequisites</h2>
+        <p class="hint">Tick every reading lab and terminal quiz you have already completed. These come from earlier lessons that today's lesson builds on.</p>
+        <div id="prereqs"></div>
+        <div id="status" class="banner hidden" aria-live="polite"></div>
+      </section>
+
+      <p id="error" class="error" role="alert"></p>
+      <button type="submit" class="primary">Submit check-in</button>
+    </form>
+
+    <section id="done" class="card hidden" aria-live="polite">
+      <h2 id="done-title">You're checked in</h2>
+      <div id="done-text"></div>
+      <div class="actions">
+        <a class="button primary" href="dashboard.html">View dashboard</a>
+        <button id="another" class="ghost" type="button">Check in someone else</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
